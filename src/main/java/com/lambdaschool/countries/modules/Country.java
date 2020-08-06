@@ -1,6 +1,18 @@
 package com.lambdaschool.countries.modules;
 
+import javax.persistence.*;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "countries")
 public class Country {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long countryid;
     private String name;
     private long population;
     private long landmasskm2;
@@ -14,6 +26,10 @@ public class Country {
     }
 
     public Country() {
+    }
+
+    public long getCountryid() {
+        return countryid;
     }
 
     public String getName() {
@@ -46,5 +62,16 @@ public class Country {
 
     public void setMedianage(int medianage) {
         this.medianage = medianage;
+    }
+
+    @Override
+    public String toString() {
+        return "Country{" +
+                "countryid=" + countryid +
+                ", name='" + name + '\'' +
+                ", population=" + population +
+                ", landmasskm2=" + landmasskm2 +
+                ", medianage=" + medianage +
+                '}';
     }
 }
